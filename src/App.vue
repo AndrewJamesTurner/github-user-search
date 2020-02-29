@@ -51,6 +51,20 @@
         <v-icon>mdi-source-repository-multiple</v-icon>
       </v-btn>
     </v-bottom-navigation>
+
+    <v-snackbar
+      v-model="snackbar"
+    >
+      You must first select a user
+      <v-btn
+        color="pink"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
+
     </v-app>
   </template>
 
@@ -67,7 +81,8 @@
     data: () => ({
       bottomNav: 'home',
       selectedGithubUsername: "",
-      githubUsers: [] as GithubUserSummary[]
+      githubUsers: [] as GithubUserSummary[],
+      snackbar: false,
     }),
         
     methods: {
@@ -88,6 +103,7 @@
               
               this.selectedGithubUsername = userDetails.login
               this.profileSelected()
+              this.snackbar = false
             })
         }
       },
@@ -155,6 +171,7 @@
         }
         else {
           this.homeSelected()
+          this.snackbar = true
         }
       },
       activitySelected() {
@@ -165,6 +182,7 @@
         }
         else {
           this.homeSelected()
+          this.snackbar = true
         }
       },
       repositoriesSelected() {
@@ -175,6 +193,7 @@
         }
         else {
           this.homeSelected()
+          this.snackbar = true
         }
       },
     }
