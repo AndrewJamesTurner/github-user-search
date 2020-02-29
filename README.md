@@ -1,5 +1,9 @@
 # github-user-search
 
+This is a simple web application exploring the use of GitHubs V3 API for querying user details. 
+
+It is built using the vue.js javascript framework, vuetify material design component framework and typescript.
+
 ## Project setup
 ```
 npm install
@@ -17,13 +21,14 @@ npm run build
 
 ### Run your unit tests
 ```
-npm run test:unit
+npm run test
 ```
 
-### Lints and fixes files
+### Deploy to GitHub pages
 ```
-npm run lint
+./deploy
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Know issues
+
+When deploying the application to github pages the buttons in the bottom navigation are not centered virtually.
