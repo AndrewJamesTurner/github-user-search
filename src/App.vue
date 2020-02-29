@@ -26,12 +26,12 @@
       </v-container>
     </v-content>
     <v-bottom-navigation
-    v-model="bottomNav"
-    fixed
-    app
-    grow
+      v-model="bottomNav"
+      fixed
+      app
+      grow
   >      
-    <v-btn class="bottomNavButton" value="home" @click="homeSelected">
+    <v-btn value="home" @click="homeSelected">
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
@@ -209,10 +209,3 @@ name: 'App',
   }
 });
 </script>
-
-<style scoped>
-
-#bottomNavButton{
- height: 56px; 
-}
-</style>
