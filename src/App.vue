@@ -31,6 +31,11 @@
       app
       grow
     >      
+      <v-btn value="home" @click="homeSelected">
+        <span>Home</span>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+
       <v-btn value="profile" @click="profileSelected">
         <span>Profile</span>
         <v-icon>mdi-emoticon-outline</v-icon>
@@ -60,7 +65,7 @@
   name: 'App',
 
     data: () => ({
-      bottomNav: 'profile',
+      bottomNav: 'home',
       selectedGithubUsername: "",
       githubUsers: [] as GithubUserSummary[]
     }),
@@ -101,7 +106,6 @@
           (error) => {
             
             if(error.name != "NavigationDuplicated") {
-
               this.closeSearchBox()
               this.bottomNav = 'profile'
               this.$router.push({name: 'home'})
@@ -132,19 +136,46 @@
       },
 
 
-      // the following three functions are used to handle 
+      // the following functions are used to handle 
       // clicks on the bottom navigation
+      homeSelected() {
+        
+        // there was an issue with the bottom nav selection not updating.
+        // delaying this assignment to a future event fixed this.
+        // TODO: look into this further to see if there is a more elegant solution
+        setTimeout(() => {this.bottomNav = 'home'})
+        
+        this.navigateTo('home', this.selectedGithubUsername)
+      },
       profileSelected() {
-        this.bottomNav = 'profile'
-        this.navigateTo('profile', this.selectedGithubUsername)
+
+        if(this.selectedGithubUsername) {
+          this.bottomNav = 'profile'
+          this.navigateTo('profile', this.selectedGithubUsername)
+        }
+        else {
+          this.homeSelected()
+        }
       },
       activitySelected() {
-        this.bottomNav = 'activity'
-        this.navigateTo('activity', this.selectedGithubUsername)
+
+        if(this.selectedGithubUsername) {
+          this.bottomNav = 'activity'
+          this.navigateTo('activity', this.selectedGithubUsername)
+        }
+        else {
+          this.homeSelected()
+        }
       },
       repositoriesSelected() {
-        this.bottomNav = 'repositories'
-        this.navigateTo('repositories', this.selectedGithubUsername)
+
+        if(this.selectedGithubUsername) {
+          this.bottomNav = 'repositories'
+          this.navigateTo('repositories', this.selectedGithubUsername)
+        }
+        else {
+          this.homeSelected()
+        }
       },
     }
   });
