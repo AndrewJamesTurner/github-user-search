@@ -21,7 +21,7 @@ test("basic use of searchGithubUsers", (done) => {
 			// NOTE: this is only a shallow check
 			// TODO: look into more comprehensive check that the structure
 			// of the returned data is captured
-			for (let key of Object.keys(exampleGithubUserSummary)) {
+			for (const key of Object.keys(exampleGithubUserSummary)) {
 				expect(exampleReturnedGithubUser).toHaveProperty(key)
 			}
 
@@ -49,7 +49,7 @@ test("basic use of getGithubUser", (done) => {
 			// NOTE: this is only a shallow check
 			// TODO: look into more comprehensive check that the structure
 			// of the returned data is captured
-			for (let key of Object.keys(exampleGithubUserDetails)) {
+			for (const key of Object.keys(exampleGithubUserDetails)) {
 				expect(githubUser).toHaveProperty(key)
 			}
 
@@ -80,7 +80,7 @@ test("basic use of getGithubUserEvents", (done) => {
 			// NOTE: this is only a shallow check
 			// TODO: look into more comprehensive check that the structure
 			// of the returned data is captured
-			for (let key of Object.keys(exampleGithubUserEvent)) {
+			for (const key of Object.keys(exampleGithubUserEvent)) {
 				expect(exampleReturnedGithubUserEvent).toHaveProperty(key)
 			}
 
@@ -113,7 +113,7 @@ test("basic use of getGithubUserRepositories", (done) => {
 			// NOTE: this is only a shallow check
 			// TODO: look into more comprehensive check that the structure
 			// of the returned data is captured
-			for (let key of Object.keys(exampleGithubUserRepository)) {
+			for (const key of Object.keys(exampleGithubUserRepository)) {
 				expect(exampleReturnedGithubUserRepository).toHaveProperty(key)
 			}
 
