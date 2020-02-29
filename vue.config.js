@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/github-user-search/',
+  // publicPath: '/github-user-search/',
   "transpileDependencies": [
     "vuetify"
   ]
