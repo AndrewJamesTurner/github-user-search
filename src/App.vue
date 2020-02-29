@@ -31,7 +31,7 @@
     app
     grow
   >      
-    <v-btn value="home" @click="homeSelected">
+    <v-btn class="bottomNavButton" value="home" @click="homeSelected">
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
@@ -211,10 +211,8 @@ name: 'App',
 </script>
 
 <style scoped>
-#app {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} 
+
+#bottomNavButton{
+ height: 56px; 
+}
 </style>
