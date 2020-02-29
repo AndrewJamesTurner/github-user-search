@@ -30,7 +30,3 @@ npm run test
 ```
 ./deploy
 ```
-
-### Know issues
-
-When deploying the application to github pages the buttons in the bottom navigation are not centered virtually.
