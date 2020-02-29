@@ -4,6 +4,8 @@ This is a simple web application exploring the use of GitHubs V3 API for queryin
 
 It is built using the vue.js javascript framework, vuetify material design component framework and typescript.
 
+The application is hosted using GitHup Pages: https://andrewjamesturner.github.io/github-user-search
+
 ## Project setup
 ```
 npm install
