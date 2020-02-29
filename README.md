@@ -1,4 +1,4 @@
-# tech-test
+# github-user-search
 
 ## Project setup
 ```
