@@ -5,6 +5,14 @@
       
       <v-card-title>
         <h2>Repositories</h2>
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="repositorySearch"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
       </v-card-title>
 
       <v-card-text>
@@ -12,6 +20,8 @@
         <v-data-table
           :headers="tableHeaders"
           :items="githubUserRepositories"
+          :search="repositorySearch"
+          :custom-filter="repositoryTableSearchFilter"
           :items-per-page="-1"
           hide-default-footer
           show-expand
@@ -28,8 +38,6 @@
             </td>
           </template>
           
-     
-
           <template v-slot:item.updated_at="{ item }">
             {{formatDate(item.updated_at)}}
           </template>
@@ -40,7 +48,9 @@
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
+import fuzzysort from 'fuzzysort'
 import {getGithubUserRepositories, GithubUserRepository } from '../ts/githubApi';
 import {formatDate} from '@/ts/helper'
 
@@ -55,6 +65,7 @@ export default Vue.extend({
 
   data: () => ({
       githubUserRepositories: [] as GithubUserRepository[],
+      repositorySearch: "",
 
       tableHeaders: [
         { text: 'Name', value: 'name' },
@@ -86,6 +97,33 @@ export default Vue.extend({
       .catch(() => {
         this.$router.push({name: 'home'})
       })
+    },
+
+    // method of overiding vuetify's default search
+    // https://vuetifyjs.com/en/components/data-tables#custom-filtering
+    // makes use of the fuzzysort library
+    repositoryTableSearchFilter(value: string, search: string, item: GithubUserRepository){
+
+      // if no search term is provided, show all results
+      if(search == "") {
+        return true
+      }
+      else {
+
+        // search on the same GithubUserRepository used by the table itself
+        const itemKeystoSearchOn = this.tableHeaders.map(x => x.value)
+
+        const results = fuzzysort.go(
+          search, 
+          [item], 
+          {
+            keys: itemKeystoSearchOn
+          }
+        )
+    
+        // if fuzzysort finds any hits, show result in table
+        return results.length > 0
+      }
     },
   },
 
