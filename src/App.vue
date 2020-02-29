@@ -90,12 +90,21 @@
       // used to handle interaction with the user search box.
       // Searching by string search the github users API.
       // Clicking on a found user selects that user.
-      userSearchUpdated(newSelection: string|GithubUserSummary) {
+      userSearchUpdated(newSelection: string|GithubUserSummary|null) {
 
-        if(typeof newSelection === 'string') {
+        if(newSelection === null) {
+          return
+        }
+
+        else if(typeof newSelection === 'string') {
           
-          searchGithubUsers(newSelection)
-            .then(accountDetails => { this.githubUsers = accountDetails })
+          if(newSelection == "") {
+            this.selectedGithubUsername = ""
+          }
+          else {
+            searchGithubUsers(newSelection)
+              .then(accountDetails => { this.githubUsers = accountDetails })
+          }
         }
         else {
            getGithubUser(newSelection.login)
