@@ -27,26 +27,25 @@
     </v-content>
     <v-bottom-navigation
       v-model="bottomNav"
-      fixed
       app
       grow
   >      
-    <v-btn value="home" @click="homeSelected">
+    <v-btn class="bottomNavButtons" value="home" @click="homeSelected">
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
 
-    <v-btn value="profile" @click="profileSelected">
+    <v-btn class="bottomNavButtons" value="profile" @click="profileSelected">
       <span>Profile</span>
       <v-icon>mdi-emoticon-outline</v-icon>
     </v-btn>
 
-    <v-btn value="activity" @click="activitySelected">
+    <v-btn class="bottomNavButtons" value="activity" @click="activitySelected">
       <span>Activity</span>
       <v-icon>mdi-history</v-icon>
     </v-btn>
 
-    <v-btn value="repositories" @click="repositoriesSelected">
+    <v-btn class="bottomNavButtons" value="repositories" @click="repositoriesSelected">
       <span>Repositories</span>
       <v-icon>mdi-source-repository-multiple</v-icon>
     </v-btn>
@@ -209,3 +208,15 @@ name: 'App',
   }
 });
 </script>
+
+<style scoped>
+/* 
+  There is an issue when deploying to github pages
+  where the hight of the bottom nav buttons is incorrectly
+  set. This is not present locally. Attempting to fix the 
+  button height to the correct value.
+*/
+.bottomNavButtons {
+  height: 56px !important;
+}
+</style>
