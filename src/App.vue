@@ -70,7 +70,6 @@
 <script lang="ts">
 
 import Vue from 'vue';
-
 import {GithubUserSummary, searchGithubUsers, getGithubUser} from './ts/githubApi'
 
 export default Vue.extend({
