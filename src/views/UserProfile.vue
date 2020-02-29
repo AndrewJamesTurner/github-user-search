@@ -7,7 +7,7 @@
       <v-card-text>
         <div v-if="githubUserDetails">
           <a style="font-size: 12px" :href="githubUserDetails.html_url">{{githubUserDetails.html_url}}</a>
-          <v-row class="d-flex align-content-start flex-wrap">
+          <v-row>
             <v-col cols="5">
               <img 
               :src="githubUserDetails.avatar_url" 
@@ -26,13 +26,13 @@
               </v-row>
             </v-col>
           </v-row>
-          <v-row class="d-flex align-content-start flex-wrap">
+          <v-row>
             <v-col style="text-align: center" v-for="stat in stats" :key="stat.name">
               <p style="margin-bottom: 0px">{{stat.name}}</p>
               <p>{{githubUserDetails[stat.key]}}</p>
             </v-col>
           </v-row>
-          <v-row v-if="githubUserDetails" class="d-flex align-content-start flex-wrap">
+          <v-row v-if="githubUserDetails">
             <v-col>
               {{githubUserDetails.bio}}
             </v-col>
