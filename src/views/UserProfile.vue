@@ -1,20 +1,13 @@
 <template>
   <div class="userProfile">
-
     <v-card>
-
       <v-card-title>
         <h2>{{githubUsername}}</h2>
       </v-card-title>
-
       <v-card-text>
-
         <div v-if="githubUserDetails">
-
           <a style="font-size: 12px" :href="githubUserDetails.html_url">{{githubUserDetails.html_url}}</a>
-
           <v-row class="d-flex align-content-start flex-wrap">
-
             <v-col cols="5">
               <img 
               :src="githubUserDetails.avatar_url" 
@@ -23,7 +16,6 @@
             >
             </v-col>
             <v-col>
-              
               <v-row v-for="detail in details.filter(x => githubUserDetails[x.key])" :key="detail.key">
                 <v-col cols="1">
                   <v-icon>{{detail.icon}}</v-icon>
@@ -32,41 +24,27 @@
                   {{githubUserDetails[detail.key]}}
                 </v-col>
               </v-row>
-              
             </v-col>
-
           </v-row>
-
           <v-row class="d-flex align-content-start flex-wrap">
             <v-col style="text-align: center" v-for="stat in stats" :key="stat.name">
               <p style="margin-bottom: 0px">{{stat.name}}</p>
               <p>{{githubUserDetails[stat.key]}}</p>
             </v-col>
-           
           </v-row>
-
           <v-row v-if="githubUserDetails" class="d-flex align-content-start flex-wrap">
             <v-col>
               {{githubUserDetails.bio}}
             </v-col>
           </v-row>
         </div>
-
       </v-card-text>
-
     </v-card>
-    
-    
-    <!-- {{githubUserDetails}} -->
-
-    
-
-
-
   </div>
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
 import { getGithubUser, GithubUserDetails } from '../ts/githubApi';
 
@@ -117,19 +95,18 @@ export default Vue.extend({
           name: "Gists",
           key: "public_gists"
         }
-
       ]
     }),
 
   mounted() {
 
     this.$emit('updateGithubUsername', this.githubUsername)
-
     this.updateGithubUserDetails(this.githubUsername)
-      
   },
 
   methods: {
+
+    // used to update the state of githubUserDetails
     updateGithubUserDetails(githubUsername: string) {
       getGithubUser(githubUsername)
       .then(userDetails => {
@@ -147,4 +124,5 @@ export default Vue.extend({
     }
   }
 });
+
 </script>
