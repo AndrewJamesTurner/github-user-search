@@ -1,10 +1,20 @@
 import axios from 'axios'
 
+// The structure of the data returned by
+// api.github.com/search/users
+// Note: this is incomplete only the 
+// properties used by this application
+// are captured
 export interface GithubUserSummary {
     login: string;
     id: number;
 }
 
+// The structure of the data returned by
+// api.github.com/search/users/{username}
+// Note: this is incomplete only the 
+// properties used by this application
+// are captured
 export interface GithubUserDetails {
     login: string;
     id: number;
@@ -14,12 +24,32 @@ export interface GithubUserDetails {
     avatar_url: string;
 }
 
+// The structure of the data returned by
+// api.github.com/search/users/{username}/events
+// Note: this is incomplete only the 
+// properties used by this application
+// are captured
 export interface GithubUserEvent {
-    x: number;
+    type: string;
+    created_at: string;
+    repo: {
+        name: string;
+    };
 }
 
+// The structure of the data returned by
+// api.github.com/search/users/{username}/repos
+// Note: this is incomplete only the 
+// properties used by this application
+// are captured
 export interface GithubUserRepository {
-    x: number;
+    name: string;
+    description: string;
+    license: {
+        name: string;
+    };
+    updated_at: string;
+    language: string;
 }
 
 export const searchGithubUsers = (searchTerm: string) => {
