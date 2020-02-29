@@ -54,7 +54,6 @@ import fuzzysort from 'fuzzysort'
 import {getGithubUserRepositories, GithubUserRepository } from '../ts/githubApi';
 import {formatDate} from '@/ts/helper'
 
-
 export default Vue.extend({
 
   name: 'Repositories',
@@ -84,11 +83,11 @@ export default Vue.extend({
 
     this.$emit('updateGithubUsername', this.githubUsername)
     this.updateGithubUserRepositories(this.githubUsername)
-
   },
 
   methods: {
     
+    // used to update the state of githubUserRepositories
     updateGithubUserRepositories(githubUsername: string) {
       getGithubUserRepositories(githubUsername)
       .then(userRepositories => {
@@ -128,6 +127,7 @@ export default Vue.extend({
   },
 
   watch: {
+    
     githubUsername() {
       this.updateGithubUserRepositories(this.githubUsername)
     }
