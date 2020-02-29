@@ -5,7 +5,7 @@
         <h2>Recent Activity</h2>
         <v-spacer></v-spacer>
         <v-text-field
-          v-model="activeitySearch"
+          v-model="activitySearch"
           append-icon="search"
           label="Search"
           single-line
@@ -16,11 +16,11 @@
         <v-data-table
           :headers="tableHeaders"
           :items="githubUserEventDetails"
-          :search="activeitySearch"
+          :search="activitySearch"
           :custom-filter="tagTableSearchFilter"
           :items-per-page="-1"
           hide-default-footer
-          :no-data-text="`${githubUsername} has no recent activites`"
+          :no-data-text="`${githubUsername} has no recent activities`"
         >
           <template v-slot:item.repo.name="{ item }">
             <a :href="`https://github.com/${item.repo.name}/`" target="_blank">{{item.repo.name}}</a>
@@ -52,7 +52,7 @@ export default Vue.extend({
   data: () => ({
 
       githubUserEventDetails: [] as GithubUserEvent[],
-      activeitySearch: "", 
+      activitySearch: "", 
 
       tableHeaders: [
         { text: 'Type', value: 'type' },
@@ -84,7 +84,7 @@ export default Vue.extend({
       })
     },
 
-    // method of overiding vuetiffies default search
+    // method of overriding vuetify's default search
     // https://vuetifyjs.com/en/components/data-tables#custom-filtering
     // makes use of the fuzzysort library
     tagTableSearchFilter(value: string, search: string, item: GithubUserEvent){
@@ -96,13 +96,13 @@ export default Vue.extend({
       else {
 
         // search on the same GithubUserEvent used by the table itself
-        const itemKeystoSearchOn = this.tableHeaders.map(x => x.value)
+        const itemKeysToSearchOn = this.tableHeaders.map(x => x.value)
 
         const results = fuzzysort.go(
           search, 
           [item], 
           {
-            keys: itemKeystoSearchOn
+            keys: itemKeysToSearchOn
           }
         )
     

@@ -112,7 +112,7 @@
         )
       },
 
-      // Fource a click outside of the combobox
+      // Force a click outside of the combobox
       // to close the on screen mobile keyboard
       closeSearchBox() {
         

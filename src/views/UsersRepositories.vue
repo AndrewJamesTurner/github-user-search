@@ -99,7 +99,7 @@ export default Vue.extend({
       })
     },
 
-    // method of overiding vuetify's default search
+    // method of overriding vuetify's default search
     // https://vuetifyjs.com/en/components/data-tables#custom-filtering
     // makes use of the fuzzysort library
     repositoryTableSearchFilter(value: string, search: string, item: GithubUserRepository){
@@ -111,13 +111,13 @@ export default Vue.extend({
       else {
 
         // search on the same GithubUserRepository used by the table itself
-        const itemKeystoSearchOn = this.tableHeaders.map(x => x.value)
+        const itemKeysToSearchOn = this.tableHeaders.map(x => x.value)
 
         const results = fuzzysort.go(
           search, 
           [item], 
           {
-            keys: itemKeystoSearchOn
+            keys: itemKeysToSearchOn
           }
         )
     
