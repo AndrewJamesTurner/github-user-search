@@ -56,7 +56,6 @@ export const getGithubUserEvents = (username: string) => {
 
         axios.get(`https://api.github.com/users/${username}/events`)
             .then(response => {
-                console.log(response.data)
                 resolve(response.data)
             })
             .catch(error => {
@@ -71,7 +70,6 @@ export const getGithubUserRepositories = (username: string) => {
 
         axios.get(`https://api.github.com/users/${username}/repos`)
             .then(response => {
-                console.log(response.data)
                 resolve(response.data)
             })
             .catch(error => {
