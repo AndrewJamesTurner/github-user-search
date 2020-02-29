@@ -1,8 +1,6 @@
 <template>
   <div class="about">
-
     <v-card>
-      
       <v-card-title>
         <h2>Repositories</h2>
         <v-spacer></v-spacer>
@@ -14,9 +12,7 @@
           hide-details
         ></v-text-field>
       </v-card-title>
-
       <v-card-text>
-
         <v-data-table
           :headers="tableHeaders"
           :items="githubUserRepositories"
@@ -37,7 +33,6 @@
               <p>{{item.description}}</p>
             </td>
           </template>
-          
           <template v-slot:item.updated_at="{ item }">
             {{formatDate(item.updated_at)}}
           </template>
