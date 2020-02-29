@@ -100,6 +100,7 @@
           
           if(newSelection == "") {
             this.selectedGithubUsername = ""
+            this.homeSelected()
           }
           else {
             searchGithubUsers(newSelection)
