@@ -1,5 +1,7 @@
 # github-user-search
 
+![Node.js CI](https://github.com/AndrewJamesTurner/github-user-search/workflows/Node.js%20CI/badge.svg?branch=master)
+
 This is a simple web application exploring the use of GitHubs V3 API for querying user details. 
 
 It is built using the vue.js javascript framework, vuetify material design component framework and typescript.
