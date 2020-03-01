@@ -33,6 +33,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
     "fuzzysort": "^1.1.4",
+    "jest-junit": "^10.0.0",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "sass": "^1.19.0",

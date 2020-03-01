@@ -21,4 +21,5 @@ yarn-error.log*
 *.sw?
 
 # jest output files
+test-reports
 coverage
